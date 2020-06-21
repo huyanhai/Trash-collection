@@ -5,7 +5,8 @@
     "pages/me",
     "pages/integral",
     "pages/feedback",
-    "pages/question"
+    "pages/question",
+    "pages/complate"
   ],
   "subPackages": [],
   "window": {

@@ -47,8 +47,15 @@
 				"navigationBarBackgroundColor": "#FFFFFF",
 				"backgroundColor": "#F2F2F2"
 			}
+		},
+		{
+			"path": "pages/complate",
+			"style": {
+				"navigationBarTitleText": "知识竞答",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#F2F2F2"
+			}
 		}
-		
     ],
 	"permission": {
 		"userLocation": {
