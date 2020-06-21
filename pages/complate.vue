@@ -14,7 +14,7 @@
 				</view>
 				<view class="item">
 					<view class="col-l">本次答题用时</view>
-					<view class="col-r green">00:02:00</view>
+					<view class="col-r green">{{time}}</view>
 				</view>
 				<view class="item">
 					<view class="col-l">积分奖励</view>
@@ -32,12 +32,15 @@ import subject from "../components/subject.vue"
 export default {
 	data() {
 		return {
-			answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"]
-			
+			answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
+			time:"00:00:00"
 		};
 	},
 	onLoad(e) {
-		
+		let {time} = e;
+		if(time) {
+			this.time = this.formatSeconds(time);
+		}
 	},
 	onShow(){
 		
@@ -58,6 +61,14 @@ export default {
 			uni.navigateTo({
 				url: path
 			})
+		},
+		formatSeconds(value) {
+		　　let result = parseInt(value)
+		　　let h = Math.floor(result / 3600) < 10 ? '0' + Math.floor(result / 3600) : Math.floor(result / 3600)
+		　　let m = Math.floor((result / 60 % 60)) < 10 ? '0' + Math.floor((result / 60 % 60)) : Math.floor((result / 60 % 60))
+		　　let s = Math.floor((result % 60)) < 10 ? '0' + Math.floor((result % 60)) : Math.floor((result % 60))
+		　　result = `${h}:${m}:${s}`
+		　　return result
 		}
 	}
 };

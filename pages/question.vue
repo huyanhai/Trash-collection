@@ -7,11 +7,11 @@
 					单选题
 				</view>
 				<view class="col-right">
-					<text class="d">1</text>/10
+					<text class="d">{{index + 1}}</text>/10
 				</view>
 			</view>
 			<view class="container">
-				<subject :title="'怡宝水瓶子'" :answer="answer"/>
+				<subject :title="title" :answer="answer" @select="select"/>
 			</view>
 		</view>
 	</view>
@@ -23,15 +23,36 @@ import subject from "../components/subject.vue"
 export default {
 	data() {
 		return {
-			answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"]
-			
+			answer:[],
+			title:null,
+			subject:[{
+				answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
+				title:"怡宝水瓶子"
+			},{
+				answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
+				title:"怡宝水瓶子1"
+			},{
+				answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
+				title:"怡宝水瓶子2"
+			},{
+				answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
+				title:"怡宝水瓶子3"
+			},{
+				answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
+				title:"怡宝水瓶子4"
+			}],
+			index:0,
+			time: 0,
+			timer:null
 		};
 	},
 	onLoad(e) {
 		
 	},
 	onShow(){
-		
+		this.index = 0;
+		this.setSubject();
+		this.times()
 	},
 	onHide(){
 		
@@ -49,6 +70,28 @@ export default {
 			uni.navigateTo({
 				url: path
 			})
+		},
+		select(e){
+			this.index++;
+			if(this.index >= 5) {
+				uni.navigateTo({
+					url:"complate?time=" + this.time
+				})
+			} else {
+				this.setSubject();
+			}
+		},
+		setSubject(){
+			this.answer = this.subject[this.index].answer;
+			this.title = this.subject[this.index].title;
+		},
+		times(){
+			let _this = this;
+			this.time = 0;
+			
+			this.timer = setInterval(function(){
+				_this.time ++;
+			},1000)
 		}
 	}
 };
