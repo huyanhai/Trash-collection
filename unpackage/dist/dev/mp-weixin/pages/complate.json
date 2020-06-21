@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "知识竞答",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "backgroundColor": "#F2F2F2",
+  "usingComponents": {
+    "subject": "/components/subject"
+  }
+}

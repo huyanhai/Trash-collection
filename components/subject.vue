@@ -28,6 +28,12 @@
 		methods:{
 			select(index){
 				this.active = index;
+				let _this = this;
+				let timer = setTimeout(function(){
+					clearTimeout(timer);
+					_this.$emit("select",index);
+					_this.active = null;
+				},1000)
 			}
 		}
 	}
