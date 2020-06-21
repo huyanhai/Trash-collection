@@ -1,0 +1,1 @@
+<view class="feedback-content"><textarea class="textarea" value="" placeholder="请提出您宝贵的建议~"></textarea><view class="item"><view class="label">姓名</view><input type="text" value="" placeholder="请输入您的姓名 "/></view><view class="item"><view class="label">联系电话</view><input class="ui-input" type="text" value="" placeholder="请输入您的电话"/></view><view class="btn">提交</view></view>

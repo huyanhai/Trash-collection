@@ -1,0 +1,1 @@
+<view class="question-content"><image class="bg" src="../static/img/question-bg.png" mode></image><view class="box"><view class="title"><view class="col-left">单选题</view><view class="col-right"><text class="d">1</text>/10</view></view><view class="container"><subject vue-id="59680687-1" title="怡宝水瓶子" answer="{{answer}}" bind:__l="__l"></subject></view></view></view>

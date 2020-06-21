@@ -1,0 +1,1 @@
+<scroll-view class="integral-content"><block wx:for="1232221312312321" wx:for-item="item" wx:for-index="index"><view class="item"><view class="col-left"><text class="title">每日知识竞答</text><text class="date">2020-03-04</text></view><view class="num add">+1</view></view></block></scroll-view>
