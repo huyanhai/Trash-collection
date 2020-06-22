@@ -28,7 +28,7 @@
   background: #FFFFFF;
   box-sizing: border-box;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   position: relative;
 }
 .integral-content .item {

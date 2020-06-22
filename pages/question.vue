@@ -7,7 +7,7 @@
 					单选题
 				</view>
 				<view class="col-right">
-					<text class="d">{{index + 1}}</text>/10
+					<text class="d">{{index >= 10 ? 10 : index + 1}}</text>/{{total}}
 				</view>
 			</view>
 			<view class="container">
@@ -25,34 +25,20 @@ export default {
 		return {
 			answer:[],
 			title:null,
-			subject:[{
-				answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
-				title:"怡宝水瓶子"
-			},{
-				answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
-				title:"怡宝水瓶子1"
-			},{
-				answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
-				title:"怡宝水瓶子2"
-			},{
-				answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
-				title:"怡宝水瓶子3"
-			},{
-				answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
-				title:"怡宝水瓶子4"
-			}],
+			subject:[],
 			index:0,
 			time: 0,
-			timer:null
+			timer:null,
+			total:null, // 题目总数
+			userAnswer:[], // 用户答题
+			customerId:null
 		};
 	},
 	onLoad(e) {
-		
+		this.customerId = uni.getStorageSync("auth").id;
 	},
 	onShow(){
-		this.index = 0;
-		this.setSubject();
-		this.times()
+		this.checkAnswer();
 	},
 	onHide(){
 		
@@ -61,9 +47,45 @@ export default {
 		subject
 	},
 	methods: {
+		checkAnswer(){
+			// 检查是否可以答题
+			post("/questionAnsweringRecord/verificationAnswersAcount",{
+				customerId: this.customerId
+			}).then(res=>{
+				if(!res){
+					let timer = setTimeout(function(){
+						clearTimeout(timer);
+						return uni.switchTab({
+							url:"index"
+						})
+					},1000)
+				} else {
+					this.getData();
+				}
+				
+			})
+		},
 		getData(data){
-			post("/goods/query",data).then(res=>{
-				console.log(res)
+			let _this = this;
+			post("/questionbank/getQuestionbankList").then(res=>{
+				_this.subject = res.map(item=>{
+					return {
+						title: item.questions,
+						answer: [item.optiona,item.optionb,item.optionc,item.optiond]
+					}
+				});
+				_this.total = _this.subject.length;
+				_this.index = 0;
+				_this.setSubject();
+				_this.times();
+				_this.userAnswer = [];
+			})
+		},
+		submitAnswer(data){
+			post("/questionbank/verificationAnswers",data).then(res=>{
+				uni.navigateTo({
+					url:"complate?time=" + this.time + "&result=" + JSON.stringify(res)
+				})
 			})
 		},
 		goPage(path){
@@ -73,10 +95,13 @@ export default {
 		},
 		select(e){
 			this.index++;
-			if(this.index >= 5) {
-				uni.navigateTo({
-					url:"complate?time=" + this.time
-				})
+			this.userAnswer.push({
+				id: this.index,
+				choseoption: e,
+				customerId: this.customerId
+			})
+			if(this.index >= this.total) {
+				this.submitAnswer(this.userAnswer);
 			} else {
 				this.setSubject();
 			}
@@ -88,7 +113,6 @@ export default {
 		times(){
 			let _this = this;
 			this.time = 0;
-			
 			this.timer = setInterval(function(){
 				_this.time ++;
 			},1000)
@@ -128,6 +152,7 @@ export default {
 			justify-content: space-between;
 			border-bottom: 2rpx solid #F3F3F3;
 			padding: 0 24px;
+			flex: 0 0 auto;
 			.col-left{
 				display: flex;
 				align-items: center;

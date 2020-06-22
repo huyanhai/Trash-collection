@@ -30,7 +30,10 @@
 .subject .subject-title {
   font-size: 48rpx;
   color: #333333;
-  margin: 50rpx 0 160rpx 0;
+  margin: 50rpx auto 20rpx auto;
+  max-width: 80%;
+  height: 200rpx;
+  overflow: hidden;
 }
 .subject .answer {
   width: 500rpx;

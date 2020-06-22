@@ -1,26 +1,12 @@
 <template>
-	<scroll-view class="content">
+	<scroll-view class="content" scroll-y @scrolltolower="scrolltolower">
 		<view class="shop-content">
-			<view class="shop-item">
+			<view class="shop-item" v-for="(item,index) in shopList" :key="index">
 				<view class="img">
-					<image src="../static/img/khs.png" mode="aspectFit"></image>
+					<image :src="baseUrl+item.pictureUrl" mode="aspectFit"></image>
 				</view>
-				<view class="integral">100积分</view>
-				<view class="name">精选葵花籽油10L</view>
-			</view>
-			<view class="shop-item">
-				<view class="img">
-					<image src="../static/logo.png" mode="aspectFit"></image>
-				</view>
-				<view class="integral">100积分</view>
-				<view class="name">精选葵花籽油10L</view>
-			</view>
-			<view class="shop-item">
-				<view class="img">
-					<image src="../static/logo.png" mode="aspectFit"></image>
-				</view>
-				<view class="integral">100积分</view>
-				<view class="name">精选葵花籽油10L</view>
+				<view class="integral">{{item.scoring}}积分</view>
+				<view class="name">{{item.goodsName}}</view>
 			</view>
 		</view>
 	</scroll-view>
@@ -28,19 +14,24 @@
 
 <script>
 import { get, post } from '../libs/request.js';
+import { BASE_URL } from "../config/index.js"
 export default {
 	data() {
 		return {
-			shopData(){
-				
-			}
+			shopList:[],
+			baseUrl:BASE_URL,
+			page:1
 		};
 	},
 	onLoad(e) {
-		this.getData();
+		
 	},
 	onShow(){
-		
+		this.shopList = []
+		this.getData({
+			"rows":10,
+			"page":this.page
+		});
 	},
 	onHide(){
 		
@@ -50,9 +41,21 @@ export default {
 	},
 	methods: {
 		getData(data){
-			post("/goods/query",data).then(res=>{
-				console.log(res)
+			let _this = this;
+			post("goods/query",data).then(res=>{
+				if(res.list.length > 0){
+					res.list.map(item => {
+						_this.shopList.push(item)
+					})
+				}
 			})
+		},
+		scrolltolower(){
+			this.page ++;
+			this.getData({
+				"rows":10,
+				"page":this.page
+			});
 		}
 	}
 };
@@ -60,15 +63,16 @@ export default {
 
 <style lang="scss">
 .content{
-	background: #FFFFFF;
+	background: #F2F2F2;
 	display: flex;
 	flex-direction: column;
+	height: 100vh;
 	.shop-content{
 		background: #F2F2F2;
 		padding: 24rpx;
 		box-sizing: border-box;
 		width: 100%;
-		min-height: 100vh;
+		min-height: 100%;
 		clear: both;
 		.shop-item{
 			float: left;

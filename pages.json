@@ -9,6 +9,16 @@
 			}
 		},
 		{
+			"path": "pages/login",
+			"style": {
+				"navigationBarTitleText": "知识讲堂",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#F2F2F2",
+				"navigationStyle":"custom",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
 			"path": "pages/shop",
 			"style": {
 				"navigationBarTitleText": "积分商城",
@@ -52,6 +62,14 @@
 			"path": "pages/complate",
 			"style": {
 				"navigationBarTitleText": "知识竞答",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#F2F2F2"
+			}
+		},
+		{
+			"path": "pages/set",
+			"style": {
+				"navigationBarTitleText": "修改密码",
 				"navigationBarBackgroundColor": "#FFFFFF",
 				"backgroundColor": "#F2F2F2"
 			}

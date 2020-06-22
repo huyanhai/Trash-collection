@@ -1,12 +1,17 @@
 <template>
-	<scroll-view class="integral-content">
-		<view class="item" v-for="(item,index) in '1232221312312321'">
+	<scroll-view class="integral-content" scroll-y @scrolltolower="scrolltolower">
+		<view class="item" v-for="(item,index) in list">
 			<view class="col-left">
-				<text class="title">每日知识竞答</text>
-				<text class="date">2020-03-04</text>
+				<text class="title" v-if="item.type === '0'">投放垃圾</text>
+				<text class="title" v-if="item.type === '1'">每日知识竞答</text>
+				<text class="title" v-if="item.type === '2'">{{item.goods}}</text>
+				<text class="date">{{item.createTime || "暂无日期"}}</text>
 			</view>
-			<view class="num add">
-				+1
+			<view class="num" v-if="item.type === '2'">
+				{{item.scoring}}
+			</view>
+			<view class="num add" v-else>
+				+{{item.scoring}}
 			</view>
 		</view>
 	</scroll-view>
@@ -17,16 +22,21 @@ import { get, post } from '../libs/request.js';
 export default {
 	data() {
 		return {
-			shopData(){
-				
-			}
+			list:[],
+			page:1
 		};
 	},
 	onLoad(e) {
-		this.getData();
+		
 	},
 	onShow(){
-		
+		this.page = 1
+		this.list = [];
+		this.getData({
+			"customerId": uni.getStorageSync("auth").id,
+			"rows":10,
+			"page":this.page
+		});
 	},
 	onHide(){
 		
@@ -36,14 +46,29 @@ export default {
 	},
 	methods: {
 		getData(data){
-			post("/goods/query",data).then(res=>{
-				console.log(res)
+			let _this = this;
+			post("/customerScoringRecord/getCustomerScoringList",data).then(res=>{
+				if(res.list.length > 0){
+					res.list.map(item => {
+						_this.list.push(item)
+					})
+				}
+				
 			})
 		},
 		goPage(path){
 			uni.navigateTo({
 				url: path
 			})
+		},
+		scrolltolower(){
+			console.log("----")
+			this.page ++;
+			this.getData({
+				"customerId": uni.getStorageSync("auth").id,
+				"rows":10,
+				"page":this.page
+			});
 		}
 	}
 };
@@ -54,7 +79,7 @@ export default {
 	background: #FFFFFF;
 	box-sizing: border-box;
 	width: 100%;
-	min-height: 100vh;
+	height: 100vh;
 	position: relative;
 	.item{
 		display: flex;

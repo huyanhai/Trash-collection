@@ -25,7 +25,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 .content {
-  background: #FFFFFF;
+  background: #F2F2F2;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -33,13 +33,14 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
+  height: 100vh;
 }
 .content .shop-content {
   background: #F2F2F2;
   padding: 24rpx;
   box-sizing: border-box;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   clear: both;
 }
 .content .shop-content .shop-item {

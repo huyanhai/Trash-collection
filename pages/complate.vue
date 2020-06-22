@@ -5,12 +5,12 @@
 			<image src="../static/img/complatebg.png" mode="" class="c-bg"></image>
 			<view class="complate-info">
 				<text class="title">恭喜您！</text>
-				<text class="score">100%</text>
+				<text class="score">{{result.accuracy}}</text>
 			</view>
 			<view class="details">
 				<view class="item">
 					<view class="col-l">错题数</view>
-					<view class="col-r yellow">0</view>
+					<view class="col-r yellow">{{result.errorNumber}}</view>
 				</view>
 				<view class="item">
 					<view class="col-l">本次答题用时</view>
@@ -18,7 +18,7 @@
 				</view>
 				<view class="item">
 					<view class="col-l">积分奖励</view>
-					<view class="col-r green">1</view>
+					<view class="col-r green">{{result.scoring}}</view>
 				</view>
 			</view>
 			<view class="tips">今日答题次数已用完，明天记得再来哦~</view>
@@ -32,14 +32,17 @@ import subject from "../components/subject.vue"
 export default {
 	data() {
 		return {
-			answer:["易腐垃圾","其他垃圾","可回收物","有害垃圾"],
-			time:"00:00:00"
+			time:"00:00:00",
+			result:{}
 		};
 	},
 	onLoad(e) {
-		let {time} = e;
+		let {time,result} = e;
 		if(time) {
 			this.time = this.formatSeconds(time);
+		}
+		if(result) {
+			this.result = JSON.parse(result)
 		}
 	},
 	onShow(){
@@ -55,11 +58,6 @@ export default {
 		getData(data){
 			post("/goods/query",data).then(res=>{
 				console.log(res)
-			})
-		},
-		goPage(path){
-			uni.navigateTo({
-				url: path
 			})
 		},
 		formatSeconds(value) {

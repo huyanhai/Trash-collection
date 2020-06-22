@@ -1,15 +1,15 @@
 <template>
 	<view class="feedback-content">
-		<textarea value="" class="textarea" placeholder="请提出您宝贵的建议~" />
+		<textarea v-model="userData.content" class="textarea" placeholder="请提出您宝贵的建议~" />
 		<view class="item">
 			<view class="label">姓名</view>
-			<input type="text"   value="" placeholder="请输入您的姓名 "/>
+			<input type="text" v-model="userData.customerName" placeholder="请输入您的姓名 "/>
 		</view>
 		<view class="item">
 			<view class="label">联系电话</view>
-			<input type="text" class="ui-input" value="" placeholder="请输入您的电话"/>
+			<input type="text" class="ui-input" v-model="userData.customerPhone" placeholder="请输入您的电话"/>
 		</view>
-		<view class="btn">提交</view>
+		<view class="btn" @click="submit">提交</view>
 	</view>
 </template>
 
@@ -18,13 +18,16 @@ import { get, post } from '../libs/request.js';
 export default {
 	data() {
 		return {
-			shopData(){
-				
+			userData:{
+				customerId: uni.getStorageSync("auth").id,
+				customerName:"",
+				customerPhone:"",
+				content:""
 			}
 		};
 	},
 	onLoad(e) {
-		this.getData();
+		
 	},
 	onShow(){
 		
@@ -36,14 +39,15 @@ export default {
 		
 	},
 	methods: {
-		getData(data){
-			post("/goods/query",data).then(res=>{
-				console.log(res)
-			})
-		},
-		goPage(path){
-			uni.navigateTo({
-				url: path
+		submit(data){
+			post("/customerFeedback/create",this.userData).then(res=>{
+				uni.showToast({
+					title:"提交成功",
+					icon:"none"
+				})
+				let timer = setTimeout(function(){
+					uni.navigateBack();
+				},1000)
 			})
 		}
 	}

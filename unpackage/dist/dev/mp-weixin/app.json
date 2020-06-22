@@ -1,12 +1,14 @@
 {
   "pages": [
     "pages/index",
+    "pages/login",
     "pages/shop",
     "pages/me",
     "pages/integral",
     "pages/feedback",
     "pages/question",
-    "pages/complate"
+    "pages/complate",
+    "pages/set"
   ],
   "subPackages": [],
   "window": {

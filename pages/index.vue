@@ -37,6 +37,7 @@
 
 <script>
 import { get, post } from '../libs/request.js';
+import { checkAuth } from '../libs/checkAuth.js';
 export default {
 	data() {
 		return {
@@ -73,6 +74,7 @@ export default {
 		};
 	},
 	onLoad(e) {
+		checkAuth();
 		this.getData();
 		this.typeImg = require(`../static/img/${this.type}.png`);
 	},
@@ -102,7 +104,7 @@ export default {
 								this.pageData["yf"]["tfyq"] = item["content"]
 							}
 							if(item.title === "常见易腐蚀垃圾"){
-								this.pageData["yf"]["list"] = item["content"].split("、").map(item=>item.replace(/ /g,'')).filter(item=>item)
+								this.pageData["yf"]["list"] = item["content"].split("|").map(item=>item.replace(/ /g,'')).filter(item=>item)
 							}
 							break;
 						case "其他垃圾":
@@ -113,7 +115,7 @@ export default {
 								this.pageData["qt"]["tfyq"] = item["content"]
 							}
 							if(item.title === "常见其他垃圾"){
-								this.pageData["qt"]["list"] = item["content"].split("、").map(item=>item.replace(/ /g,'')).filter(item=>item)
+								this.pageData["qt"]["list"] = item["content"].split("|").map(item=>item.replace(/ /g,'')).filter(item=>item)
 							}
 							break;
 						case "可回收物":
@@ -124,7 +126,7 @@ export default {
 								this.pageData["khs"]["tfyq"] = item["content"]
 							}
 							if(item.title === "常见可回收物"){
-								this.pageData["khs"]["list"] = item["content"].split("、").map(item=>item.replace(/ /g,'')).filter(item=>item)
+								this.pageData["khs"]["list"] = item["content"].split("|").map(item=>item.replace(/ /g,'')).filter(item=>item)
 							}
 							break;
 						case "有害垃圾":
@@ -135,7 +137,7 @@ export default {
 								this.pageData["yh"]["tfyq"] = item["content"]
 							}
 							if(item.title === "常见有害垃圾"){
-								this.pageData["yh"]["list"] = item["content"].split("、").map(item=>item.replace(/ /g,'')).filter(item=>item)
+								this.pageData["yh"]["list"] = item["content"].split("|").map(item=>item.replace(/ /g,'')).filter(item=>item)
 							}
 							break;
 						default:

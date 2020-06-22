@@ -31,7 +31,7 @@
 				let _this = this;
 				let timer = setTimeout(function(){
 					clearTimeout(timer);
-					_this.$emit("select",index);
+					_this.$emit("select",_this.answer[index]);
 					_this.active = null;
 				},1000)
 			}
@@ -45,7 +45,10 @@
 	.subject-title{
 		font-size: 48rpx;
 		color: #333333;
-		margin: 50rpx 0 160rpx 0;
+		margin: 50rpx auto 20rpx auto;
+		max-width: 80%;
+		height: 200rpx;
+		overflow: hidden;
 	}
 	.answer{
 		width: 500rpx;

@@ -4,8 +4,8 @@
 		<view class="user-info">
 			<image src="../static/img/me-tx.png" class="user-img" mode=""></image>
 			<view class="col-right">
-				<text class="name">张三</text>
-				<text class="address">天源小区8栋622室</text>
+				<text class="name">{{userInfo.customerName}}</text>
+				<text class="address">{{userInfo.customerAddress}}</text>
 			</view>
 		</view>
 		<view class="more-action">
@@ -17,7 +17,7 @@
 					积分余额
 				</view>
 				<view class="col-right">
-					200分
+					{{userInfo.customerScoring || 0}}分
 				</view>
 			</view>
 			<view class="links">
@@ -28,7 +28,7 @@
 					<view class="left" @click="goPage('feedback')">我要反馈</view>
 				</view>
 				<view class="link">
-					<view class="left" @click="goPage('setpwd')">修改密码</view>
+					<view class="left" @click="goPage('set')">修改密码</view>
 				</view>
 			</view>
 		</view>
@@ -40,13 +40,12 @@ import { get, post } from '../libs/request.js';
 export default {
 	data() {
 		return {
-			shopData(){
-				
-			}
+			userInfo:{}
 		};
 	},
 	onLoad(e) {
-		this.getData();
+		this.userInfo = uni.getStorageSync("auth");
+		console.log(this.userInfo)
 	},
 	onShow(){
 		
@@ -58,11 +57,6 @@ export default {
 		
 	},
 	methods: {
-		getData(data){
-			post("/goods/query",data).then(res=>{
-				console.log(res)
-			})
-		},
 		goPage(path){
 			uni.navigateTo({
 				url: path
