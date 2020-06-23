@@ -15,8 +15,10 @@ export function get(url,data) {
 						icon:"none",
 						duration:3000
 					})
+					resolve(res.data.result);
+				} else {
+					resolve(res.data.result || true);
 				}
-				resolve(res.data.result);
 			},
 			fail:function(err){
 				uni.hideLoading();
@@ -46,8 +48,10 @@ export function post(url,data) {
 						icon:"none",
 						duration:3000
 					})
+					resolve(res.data.result);
+				} else {
+					resolve(res.data.result || true);
 				}
-				resolve(res.data.result);
 			},
 			fail:function(err){
 				uni.hideLoading();

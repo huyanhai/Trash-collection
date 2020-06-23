@@ -52,6 +52,7 @@ export default {
 			post("/questionAnsweringRecord/verificationAnswersAcount",{
 				customerId: this.customerId
 			}).then(res=>{
+				console.log(res)
 				if(!res){
 					let timer = setTimeout(function(){
 						clearTimeout(timer);

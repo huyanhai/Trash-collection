@@ -33,7 +33,7 @@
 					clearTimeout(timer);
 					_this.$emit("select",_this.answer[index]);
 					_this.active = null;
-				},1000)
+				},100)
 			}
 		}
 	}
