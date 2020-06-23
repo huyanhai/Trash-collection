@@ -31,7 +31,8 @@ export default {
 			timer:null,
 			total:null, // 题目总数
 			userAnswer:[], // 用户答题
-			customerId:null
+			customerId:null,
+			isAnswer:false
 		};
 	},
 	onLoad(e) {
@@ -54,16 +55,9 @@ export default {
 			}).then(res=>{
 				console.log(res)
 				if(!res){
-					let timer = setTimeout(function(){
-						clearTimeout(timer);
-						return uni.switchTab({
-							url:"index"
-						})
-					},1000)
-				} else {
-					this.getData();
+					this.isAnswer = true;
 				}
-				
+				this.getData();
 			})
 		},
 		getData(data){
@@ -95,6 +89,12 @@ export default {
 			})
 		},
 		select(e){
+			if(this.isAnswer){
+				return uni.showToast({
+					title:"今日已答题，请明日在来",
+					icon:"none"
+				})
+			}
 			this.index++;
 			this.userAnswer.push({
 				id: this.index,
