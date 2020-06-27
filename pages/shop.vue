@@ -28,6 +28,7 @@ export default {
 	},
 	onShow(){
 		this.shopList = []
+		this.page = 1;
 		this.getData({
 			"rows":10,
 			"page":this.page

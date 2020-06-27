@@ -4,6 +4,8 @@
 			<view class="col-left">
 				<text class="title" v-if="item.type === '0'">投放垃圾</text>
 				<text class="title" v-if="item.type === '1'">每日知识竞答</text>
+				<text class="title" v-if="item.type === '3'">活动积分</text>
+				<text class="title" v-if="item.type === '4'">其他</text>
 				<text class="title" v-if="item.type === '2'">{{item.goods}}</text>
 				<text class="date">{{item.createTime || "暂无日期"}}</text>
 			</view>

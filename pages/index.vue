@@ -1,15 +1,15 @@
 <template>
 	<view class="content">
-		<view class="notice">
+		<!-- <view class="notice">
 			<view class="info">
 				<image class="ui-icon" src="../static/img/icon-notice.png"></image>
 				点我查看社区公告
 			</view>
 			<image src="../static/img/notice.png" class="ui-img"></image>
-		</view>
+		</view> -->
 		<view class="box">
 			<view class="tab">
-				<view class="item" :class="{active:type==='yf'}" @click="changeType('yf')">易腐垃圾</view>
+				<view class="item" :class="{active:type==='yf'}" @click="changeType('yf')">厨余垃圾</view>
 				<view class="item" :class="{active:type==='qt'}" @click="changeType('qt')">其他垃圾</view>
 				<view class="item" :class="{active:type==='khs'}" @click="changeType('khs')">可回收物</view>
 				<view class="item" :class="{active:type==='yh'}" @click="changeType('yh')">有害垃圾</view>
@@ -27,7 +27,10 @@
 					<text class="text">{{pageData[type]["tfyq"]}}</text>
 				</view>
 				<view :class="['details',type]">
-					<view class="title">常见有害垃圾</view>
+					<view class="title" :class="{active:type==='yf'}">常见厨余垃圾</view>
+					<view class="title" :class="{active:type==='qt'}">常见其他垃圾</view>
+					<view class="title" :class="{active:type==='khs'}">常见可回收垃圾</view>
+					<view class="title" :class="{active:type==='yh'}">常见有害垃圾</view>
 					<view class="item" v-for="(item,index) in pageData[type]['list']" :key="index">{{item}}</view>
 				</view>
 			</scroll-view>
@@ -42,7 +45,7 @@ export default {
 	data() {
 		return {
 			typeDetail:{
-				"yf":"易腐垃圾",
+				"yf":"厨余垃圾",
 				"qt":"其他垃圾",
 				"khs":"可回收物",
 				"yh":"有害垃圾"
@@ -74,12 +77,11 @@ export default {
 		};
 	},
 	onLoad(e) {
-		checkAuth();
 		this.getData();
 		this.typeImg = require(`../static/img/${this.type}.png`);
 	},
 	onShow(){
-		
+		checkAuth();
 	},
 	onHide(){
 		
@@ -96,14 +98,14 @@ export default {
 			post("/refuseClassification/getRefuseClassificationList",{}).then(res=>{
 				for(let item of res){
 					switch (item.type){
-						case "易腐垃圾":
-							if(item.title === "易腐垃圾"){
+						case "厨余垃圾":
+							if(item.title === "厨余垃圾"){
 								this.pageData["yf"]["info"] = item["content"]
 							}
 							if(item.title === "投放要求"){
 								this.pageData["yf"]["tfyq"] = item["content"]
 							}
-							if(item.title === "常见易腐蚀垃圾"){
+							if(item.title === "常见厨余垃圾"){
 								this.pageData["yf"]["list"] = item["content"].split("|").map(item=>item.replace(/ /g,'')).filter(item=>item)
 							}
 							break;
@@ -200,7 +202,7 @@ export default {
 		box-sizing: border-box;
 		.item{
 			width: 25%;
-			font-size: 30rpx;
+			font-size: 32rpx;
 			color: #333333;
 			text-align: center;
 			&.active{
@@ -214,9 +216,13 @@ export default {
 			position: relative;
 			margin: 24rpx;
 			overflow:hidden ;
-			&.yf,&.qt,&.khs{
+			&.yf,&.qt{
 				width: 702rpx;
 				height: 220rpx;
+			}
+			&.khs{
+				width: 702rpx;
+				height: 260rpx;
 			}
 			&.yh{
 				width: 702rpx;
@@ -233,12 +239,12 @@ export default {
 				left: 30rpx;
 				line-height: 36rpx;
 				.title{
-					font-size: 32rpx;
+					font-size: 34rpx;
 					color: #FFFFFF;
 					margin-bottom: 10rpx;
 				}
 				.text{
-					font-size: 26rpx;
+					font-size: 28rpx;
 					color: #FFFFFF;
 				}
 			}
@@ -249,17 +255,18 @@ export default {
 			border-bottom: 2rpx solid rgba($color: #487358, $alpha: 0.1);
 			padding: 0 24rpx 24rpx 24rpx;
 			.title{
-				font-size: 32rpx;
+				font-size: 34rpx;
 				color: #333333;
 				font-weight: bold;
 			}
 			.text{
-				font-size: 28rpx;
+				font-size: 30rpx;
 				color: #666666;
 			}
 		}
 		.details{
 			margin: 24rpx 24rpx 0 24rpx;
+			overflow: hidden;
 			&.yf{
 				.item{
 					color: #487358;
@@ -293,14 +300,18 @@ export default {
 				}
 			}
 			.title{
-				font-size: 32rpx;
+				font-size: 34rpx;
 				color: #333333;
 				margin: 24rpx 0;
 				padding: 0 24rpx;
 				font-weight: bold;
+				display: none;
+				&.active{
+					display: block;
+				}
 			}
 			.item{
-				font-size: 28rpx;
+				font-size: 30rpx;
 				color: #666666;
 				width: 100%;
 				height: 60rpx;

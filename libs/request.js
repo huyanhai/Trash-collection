@@ -15,6 +15,11 @@ export function get(url,data) {
 						icon:"none",
 						duration:3000
 					})
+					// if(res.data.code === 2){
+					// 	uni.navigateTo({
+					// 		url:"login"
+					// 	})
+					// }
 					resolve(res.data.result);
 				} else {
 					resolve(res.data.result || true);
@@ -48,6 +53,11 @@ export function post(url,data) {
 						icon:"none",
 						duration:3000
 					})
+					// if(res.data.code === 2){
+					// 	uni.navigateTo({
+					// 		url:"login"
+					// 	})
+					// }
 					resolve(res.data.result);
 				} else {
 					resolve(res.data.result || true);

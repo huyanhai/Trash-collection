@@ -11,7 +11,7 @@
 				</view>
 			</view>
 			<view class="container">
-				<subject :title="title" :answer="answer" @select="select"/>
+				<subject :title="title" :answer="answer" :qid.sync="qid" @select="select"/>
 			</view>
 		</view>
 	</view>
@@ -19,6 +19,7 @@
 
 <script>
 import { get, post } from '../libs/request.js';
+import { checkAuth } from '../libs/checkAuth.js';
 import subject from "../components/subject.vue"
 export default {
 	data() {
@@ -32,13 +33,16 @@ export default {
 			total:null, // 题目总数
 			userAnswer:[], // 用户答题
 			customerId:null,
-			isAnswer:false
+			isAnswer:false,
+			qid:null // 题目id
 		};
 	},
 	onLoad(e) {
-		this.customerId = uni.getStorageSync("auth").id;
+		
 	},
 	onShow(){
+		checkAuth();
+		this.customerId = uni.getStorageSync("auth").id;
 		this.checkAnswer();
 	},
 	onHide(){
@@ -66,7 +70,8 @@ export default {
 				_this.subject = res.map(item=>{
 					return {
 						title: item.questions,
-						answer: [item.optiona,item.optionb,item.optionc,item.optiond]
+						answer: [item.optiona,item.optionb,item.optionc,item.optiond],
+						id: item.id
 					}
 				});
 				_this.total = _this.subject.length;
@@ -97,10 +102,11 @@ export default {
 			}
 			this.index++;
 			this.userAnswer.push({
-				id: this.index,
-				choseoption: e,
+				id: e.id,
+				choseoption: e.answer,
 				customerId: this.customerId
 			})
+			console.log(this.userAnswer)
 			if(this.index >= this.total) {
 				this.submitAnswer(this.userAnswer);
 			} else {
@@ -110,6 +116,7 @@ export default {
 		setSubject(){
 			this.answer = this.subject[this.index].answer;
 			this.title = this.subject[this.index].title;
+			this.qid = this.subject[this.index].id;
 		},
 		times(){
 			let _this = this;

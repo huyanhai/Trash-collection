@@ -3,7 +3,7 @@
 		<view class="subject-title">
 			{{title}}
 		</view>
-		<view class="answer" :class="{'active':active===index}" v-for="(item,index) in answer" :key="index" @click="select(index)">
+		<view class="answer" :class="{'active':active===index}" v-for="(item,index) in answer" :key="index" @click="select(index,qid)">
 			{{item}}
 		</view>
 	</view>
@@ -18,6 +18,9 @@
 			},
 			answer:{
 				type:Array
+			},
+			qid:{
+				type:Number
 			}
 		},
 		data() {
@@ -26,12 +29,16 @@
 			};
 		},
 		methods:{
-			select(index){
+			select(index,id){
 				this.active = index;
 				let _this = this;
+				console.log("dati",id)
 				let timer = setTimeout(function(){
 					clearTimeout(timer);
-					_this.$emit("select",_this.answer[index]);
+					_this.$emit("select",{
+						id:id,
+						answer:_this.answer[index]
+					});
 					_this.active = null;
 				},100)
 			}

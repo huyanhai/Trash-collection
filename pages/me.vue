@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { checkAuth } from '../libs/checkAuth.js';
 import { get, post } from '../libs/request.js';
 export default {
 	data() {
@@ -44,11 +45,11 @@ export default {
 		};
 	},
 	onLoad(e) {
-		this.userInfo = uni.getStorageSync("auth");
-		console.log(this.userInfo)
+		
 	},
 	onShow(){
-		
+		checkAuth();
+		this.getInfo();
 	},
 	onHide(){
 		
@@ -57,6 +58,15 @@ export default {
 		
 	},
 	methods: {
+		getInfo(){
+			post("/customer/getCustomer",{
+				id:uni.getStorageSync("auth").id
+			}).then(res=>{
+				if(res){
+					this.userInfo = res;
+				}
+			})
+		},
 		goPage(path){
 			uni.navigateTo({
 				url: path

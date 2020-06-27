@@ -7625,9 +7625,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!*****************************!*\
-  !*** G:/外包/垃圾分类/pages.json ***!
-  \*****************************/
+/*!***********************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/pages.json ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7640,9 +7640,9 @@ module.exports = g;
 /* 8 */,
 /* 9 */,
 /* 10 */
-/*!**********************************!*\
-  !*** G:/外包/垃圾分类/libs/request.js ***!
-  \**********************************/
+/*!****************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/libs/request.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7664,6 +7664,11 @@ function get(url, data) {
             icon: "none",
             duration: 3000 });
 
+          // if(res.data.code === 2){
+          // 	uni.navigateTo({
+          // 		url:"login"
+          // 	})
+          // }
           resolve(res.data.result);
         } else {
           resolve(res.data.result || true);
@@ -7697,6 +7702,11 @@ function post(url, data) {
             icon: "none",
             duration: 3000 });
 
+          // if(res.data.code === 2){
+          // 	uni.navigateTo({
+          // 		url:"login"
+          // 	})
+          // }
           resolve(res.data.result);
         } else {
           resolve(res.data.result || true);
@@ -7717,9 +7727,9 @@ function post(url, data) {
 
 /***/ }),
 /* 11 */
-/*!**********************************!*\
-  !*** G:/外包/垃圾分类/config/index.js ***!
-  \**********************************/
+/*!****************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/config/index.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7730,9 +7740,9 @@ exports.TIMEOUT = TIMEOUT;
 
 /***/ }),
 /* 12 */
-/*!************************************!*\
-  !*** G:/外包/垃圾分类/libs/checkAuth.js ***!
-  \************************************/
+/*!******************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/libs/checkAuth.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7749,9 +7759,9 @@ exports.TIMEOUT = TIMEOUT;
 
 /***/ }),
 /* 13 */
-/*!************************************************!*\
-  !*** G:/外包/垃圾分类/static/img sync ^\.\/.*\.png$ ***!
-  \************************************************/
+/*!******************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img sync ^\.\/.*\.png$ ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7807,9 +7817,9 @@ webpackContext.id = 13;
 
 /***/ }),
 /* 14 */
-/*!********************************************!*\
-  !*** G:/外包/垃圾分类/static/img/complatebg.png ***!
-  \********************************************/
+/*!**************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/complatebg.png ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7817,9 +7827,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAooAAAFFCAMAAABc
 
 /***/ }),
 /* 15 */
-/*!*********************************************!*\
-  !*** G:/外包/垃圾分类/static/img/icon-notice.png ***!
-  \*********************************************/
+/*!***************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/icon-notice.png ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7827,9 +7837,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM
 
 /***/ }),
 /* 16 */
-/*!*************************************!*\
-  !*** G:/外包/垃圾分类/static/img/khs.png ***!
-  \*************************************/
+/*!*******************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/khs.png ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7837,9 +7847,9 @@ module.exports = "/static/img/khs.png";
 
 /***/ }),
 /* 17 */
-/*!*********************************************!*\
-  !*** G:/外包/垃圾分类/static/img/knowledge-s.png ***!
-  \*********************************************/
+/*!***************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/knowledge-s.png ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7847,9 +7857,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABH
 
 /***/ }),
 /* 18 */
-/*!*******************************************!*\
-  !*** G:/外包/垃圾分类/static/img/knowledge.png ***!
-  \*******************************************/
+/*!*************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/knowledge.png ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7857,9 +7867,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABH
 
 /***/ }),
 /* 19 */
-/*!**********************************************!*\
-  !*** G:/外包/垃圾分类/static/img/knowledge1-s.png ***!
-  \**********************************************/
+/*!****************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/knowledge1-s.png ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7867,9 +7877,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABH
 
 /***/ }),
 /* 20 */
-/*!********************************************!*\
-  !*** G:/外包/垃圾分类/static/img/knowledge1.png ***!
-  \********************************************/
+/*!**************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/knowledge1.png ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7877,9 +7887,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABH
 
 /***/ }),
 /* 21 */
-/*!******************************************!*\
-  !*** G:/外包/垃圾分类/static/img/login-bg.png ***!
-  \******************************************/
+/*!************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/login-bg.png ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7887,9 +7897,9 @@ module.exports = "/static/img/login-bg.png";
 
 /***/ }),
 /* 22 */
-/*!*********************************************!*\
-  !*** G:/外包/垃圾分类/static/img/login-title.png ***!
-  \*********************************************/
+/*!***************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/login-title.png ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7897,9 +7907,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX8AAAEWCAMAAAC5
 
 /***/ }),
 /* 23 */
-/*!***************************************!*\
-  !*** G:/外包/垃圾分类/static/img/me-bg.png ***!
-  \***************************************/
+/*!*********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/me-bg.png ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7907,9 +7917,9 @@ module.exports = "/static/img/me-bg.png";
 
 /***/ }),
 /* 24 */
-/*!***************************************!*\
-  !*** G:/外包/垃圾分类/static/img/me-fl.png ***!
-  \***************************************/
+/*!*********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/me-fl.png ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7917,9 +7927,9 @@ module.exports = "/static/img/me-fl.png";
 
 /***/ }),
 /* 25 */
-/*!***************************************!*\
-  !*** G:/外包/垃圾分类/static/img/me-hz.png ***!
-  \***************************************/
+/*!*********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/me-hz.png ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7927,9 +7937,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAMAAAAP
 
 /***/ }),
 /* 26 */
-/*!**************************************!*\
-  !*** G:/外包/垃圾分类/static/img/me-s.png ***!
-  \**************************************/
+/*!********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/me-s.png ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7937,9 +7947,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABH
 
 /***/ }),
 /* 27 */
-/*!***************************************!*\
-  !*** G:/外包/垃圾分类/static/img/me-tx.png ***!
-  \***************************************/
+/*!*********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/me-tx.png ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7947,9 +7957,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAMAAAAJ
 
 /***/ }),
 /* 28 */
-/*!****************************************!*\
-  !*** G:/外包/垃圾分类/static/img/me-xbg.png ***!
-  \****************************************/
+/*!**********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/me-xbg.png ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7957,9 +7967,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABXwAAAEyCAMAAAB+
 
 /***/ }),
 /* 29 */
-/*!************************************!*\
-  !*** G:/外包/垃圾分类/static/img/me.png ***!
-  \************************************/
+/*!******************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/me.png ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7967,9 +7977,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABH
 
 /***/ }),
 /* 30 */
-/*!**************************************!*\
-  !*** G:/外包/垃圾分类/static/img/mima.png ***!
-  \**************************************/
+/*!********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/mima.png ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7977,9 +7987,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAkCAYAAACe
 
 /***/ }),
 /* 31 */
-/*!****************************************!*\
-  !*** G:/外包/垃圾分类/static/img/notice.png ***!
-  \****************************************/
+/*!**********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/notice.png ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7987,9 +7997,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAA8CAMAAAAO
 
 /***/ }),
 /* 32 */
-/*!************************************!*\
-  !*** G:/外包/垃圾分类/static/img/qt.png ***!
-  \************************************/
+/*!******************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/qt.png ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7997,9 +8007,9 @@ module.exports = "/static/img/qt.png";
 
 /***/ }),
 /* 33 */
-/*!*********************************************!*\
-  !*** G:/外包/垃圾分类/static/img/question-bg.png ***!
-  \*********************************************/
+/*!***************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/question-bg.png ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8007,9 +8017,9 @@ module.exports = "/static/img/question-bg.png";
 
 /***/ }),
 /* 34 */
-/*!****************************************!*\
-  !*** G:/外包/垃圾分类/static/img/shop-s.png ***!
-  \****************************************/
+/*!**********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/shop-s.png ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8017,9 +8027,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABH
 
 /***/ }),
 /* 35 */
-/*!**************************************!*\
-  !*** G:/外包/垃圾分类/static/img/shop.png ***!
-  \**************************************/
+/*!********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/shop.png ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8027,9 +8037,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABH
 
 /***/ }),
 /* 36 */
-/*!************************************!*\
-  !*** G:/外包/垃圾分类/static/img/yf.png ***!
-  \************************************/
+/*!******************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/yf.png ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8037,9 +8047,9 @@ module.exports = "/static/img/yf.png";
 
 /***/ }),
 /* 37 */
-/*!************************************!*\
-  !*** G:/外包/垃圾分类/static/img/yh.png ***!
-  \************************************/
+/*!******************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/yh.png ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8047,9 +8057,9 @@ module.exports = "/static/img/yh.png";
 
 /***/ }),
 /* 38 */
-/*!********************************************!*\
-  !*** G:/外包/垃圾分类/static/img/yiyonglaji.png ***!
-  \********************************************/
+/*!**************************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/yiyonglaji.png ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8057,9 +8067,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABH
 
 /***/ }),
 /* 39 */
-/*!****************************************!*\
-  !*** G:/外包/垃圾分类/static/img/yonghu.png ***!
-  \****************************************/
+/*!**********************************************************!*\
+  !*** /Users/yhh/Documents/外包/垃圾回收/static/img/yonghu.png ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

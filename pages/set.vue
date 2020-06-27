@@ -68,7 +68,12 @@ export default {
 				})
 			}
 			post("/customer/updatePassword",this.setData).then(res=>{
-				console.log(res)
+				if(res){
+					uni.clearStorageSync("auth");
+					uni.navigateTo({
+						url:"login"
+					})
+				}
 			})
 		},
 		goPage(path){
